@@ -57,9 +57,9 @@ app.post("/Register",(req,res)=>{
     })
 })
 app.post("/addExpense",(req,res)=>{
-        const {catvalue,expense} =req.body;
-        console.log(catvalue,expense) 
-            const user = new Expense({catvalue,expense})
+        const {catvalue,expense,date} =req.body;
+        console.log('data',catvalue,expense,date) 
+            const user = new Expense({catvalue,expense,date})
                 user.save(err=>{
                     if(err){
                         res.send({message:''})

@@ -7,6 +7,7 @@ const history = useHistory()
     const [category, setCategory] = useState([]);
     const [catvalue,setcatvalue]=useState("");
     const [expense,setExpense]=useState("");
+    const [date,setDate]=useState("");
     
     useEffect(async() => {
         let cat = await axios.get("http://localhost:6969/getCategory")
@@ -19,8 +20,8 @@ const history = useHistory()
     },[]) 
     
     const addExpense =async()=>{
-        
-        let res = await axios.post("http://localhost:6969/addExpense",{catvalue,expense})
+        console.log(date)
+        let res = await axios.post("http://localhost:6969/addExpense",{catvalue,expense,date})
         console.log(res)
 
     }
@@ -51,8 +52,12 @@ const history = useHistory()
                     <input type="text" className="form-control" placeholder="Enter Expense" name="expense" onChange={e=>setExpense(e.target.value)} />
                 </div>
 
+                <div className="form-group">
+                    <label>Date</label>
+                    <input type="date" className="form-control" placeholder="Enter Date" name="date" onChange={e=>setDate(e.target.value)} />
+                </div>
                 
-                <button type="submit" className="btn btn-primary btn-block" onClick={addExpense} id="btn">Add</button>
+                <button type="button" className="btn btn-primary btn-block" onClick={addExpense} id="btn">Add</button>
                 <button type="button" className="btn btn-primary btn-block" onClick={navigateTo} id="mybtn">Menu</button>
                 
             </form>
