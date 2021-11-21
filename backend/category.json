@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "619901d146f34457cc0606b1"
+  },
+  "category": "food",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6199052937631a43142c5423"
+  },
+  "category": "clothes",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6199e3ed3d3c64b587bf1e57"
+  },
+  "category": "travel",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a0852b963e697b237e0a0"
+  },
+  "category": "drinks",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a0fa6b963e697b237e0cf"
+  },
+  "category": "vehicle",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a28c6dc76171bc2cbd298"
+  },
+  "category": "shopping",
+  "__v": 0
+}]

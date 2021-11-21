@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "6199e2df90ea94f67866f054"
+  },
+  "catvalue": "food",
+  "expense": 2000,
+  "date": {
+    "$date": "2021-11-01T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6199e5fa3d3c64b587bf1e62"
+  },
+  "catvalue": "clothes",
+  "expense": 1000,
+  "date": {
+    "$date": "2021-11-16T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a060c3d3c64b587bf1f85"
+  },
+  "catvalue": "food",
+  "expense": 3444,
+  "date": {
+    "$date": "2021-11-11T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a07143d3c64b587bf1f8c"
+  },
+  "catvalue": "food",
+  "expense": 2000,
+  "date": {
+    "$date": "2021-11-10T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a07ccb963e697b237e097"
+  },
+  "catvalue": "food",
+  "expense": 2000,
+  "date": {
+    "$date": "2021-11-20T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a080db963e697b237e09b"
+  },
+  "catvalue": "food",
+  "expense": 1000,
+  "date": {
+    "$date": "2021-11-05T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a0825b963e697b237e09e"
+  },
+  "catvalue": "travel",
+  "expense": 2000,
+  "date": {
+    "$date": "2021-11-04T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a095ab963e697b237e0a3"
+  },
+  "catvalue": "drinks",
+  "expense": 2000,
+  "date": {
+    "$date": "2021-11-02T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a28d5dc76171bc2cbd29b"
+  },
+  "catvalue": "shopping",
+  "expense": 2000,
+  "date": {
+    "$date": "2021-11-04T00:00:00Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "6198cdf4b2cc72a198e71816"
+  },
+  "name": "john",
+  "email": "john@gmail.com",
+  "password": "john@123",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6198cf51b2cc72a198e71819"
+  },
+  "name": "john",
+  "email": "hdojd",
+  "password": "jdijd",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6198dc35b2cc72a198e7181d"
+  },
+  "name": "qwe",
+  "email": "poh@gmail.com",
+  "password": "udyh",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6198dd152bfe09e95e73eb67"
+  },
+  "name": "jhs",
+  "email": "jhd@gmail.com",
+  "password": "jhjs",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6198dde62bfe09e95e73eb6a"
+  },
+  "name": "oisk",
+  "email": "kjdk@gmail.com",
+  "password": "rukj",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6198deea2bfe09e95e73eb6d"
+  },
+  "name": "kj",
+  "email": "jhs@gmail.com",
+  "password": "738738",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6198e29654b1f3f1d9834a59"
+  },
+  "name": "dkhj",
+  "email": "jdhdj@gmail.com",
+  "password": "jdhjd",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6199319058599452f021ce84"
+  },
+  "name": "john",
+  "email": "jack@gmail.com",
+  "password": "jach@123",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a0a3cb963e697b237e0a7"
+  },
+  "name": "jos",
+  "email": "jos@gmail.com",
+  "password": "jos@123",
+  "__v": 0
+}]
