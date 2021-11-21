@@ -26,7 +26,11 @@ const history = useHistory()
     //hooks calls after rendering select state
     useEffect(async() => {
         var dataa = []
-        let cat = await axios.get("http://localhost:6969/getCategory")
+        var token = localStorage.getItem('token')
+        let config = {
+            headers: { Authorization: `${token}` }
+        }
+        let cat = await axios.get("http://localhost:6969/getCategory",config)
         if(cat.data.details == ''){
             alert('not authorised')
         }else{
@@ -36,7 +40,7 @@ const history = useHistory()
         }
 
         
-        let res = await axios.get("http://localhost:6969/getExpense")
+        let res = await axios.get("http://localhost:6969/getExpense",config)
         if(res.data.details == '')
             alert('not authorised')
         else{
@@ -52,7 +56,7 @@ const history = useHistory()
     const navigateTo = () => history.push('/Menu')
     return (
         <>
-        
+        { localStorage.getItem('token') == null?history.push('/Login'):(    
         <div className="auth-wrapper" id="mystyle">
  
     <div className="app container p-5">
@@ -95,7 +99,7 @@ const history = useHistory()
             <button type="button" className="btn btn-primary btn-block" onClick={navigateTo} id="mybtn">Menu</button>
        </div>
         
-            </div>
+            </div>)}
         </>
     )
 }

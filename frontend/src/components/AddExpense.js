@@ -10,7 +10,11 @@ const history = useHistory()
     const [date,setDate]=useState("");
     
     useEffect(async() => {
-        let cat = await axios.get("http://localhost:6969/getCategory")
+        var token = localStorage.getItem('token')
+        let config = {
+            headers: { Authorization: `${token}` }
+        }
+        let cat = await axios.get("http://localhost:6969/getCategory",config)
         
         for(var i=0; i<cat.data.details.length;i++){
             
@@ -39,7 +43,7 @@ const history = useHistory()
     
     return (
         <>
-        
+        { localStorage.getItem('token') == null?history.push('/Login'):(
         <div className="auth-wrapper" id="mystyle">
         
         <div className="auth-inner">
@@ -71,7 +75,7 @@ const history = useHistory()
                 
             </form>
             </div>
-            </div>
+            </div>)}
         </>
     )
 }

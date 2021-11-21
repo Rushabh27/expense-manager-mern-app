@@ -22,6 +22,7 @@ mongoose.connect("mongodb://localhost:27017/Expense",{
 
 //routes routes
 app.post("/Login",(req,res)=>{
+    try{
     const {email,password} =req.body;
     console.log(req.body) 
     // const user = await User.findOne({email:email})
@@ -40,8 +41,13 @@ app.post("/Login",(req,res)=>{
             res.send("not register")
         }
     })
+}catch(e){
+    console.log(e)
+    res.send({message:e})
+}
 });
 app.post("/Register",(req,res)=>{
+    try{
     console.log(req.body) 
     const {name,email,password} =req.body;
     User.findOne({email:email},(err,user)=>{
@@ -58,8 +64,13 @@ app.post("/Register",(req,res)=>{
             })
         }
     })
+}catch(e){
+    console.log(e)
+    res.send({message:e})
+}
 })
 app.post("/addExpense",(req,res)=>{
+    try{
     var token =  req.header('authorization')
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     if(verified){
@@ -76,8 +87,13 @@ app.post("/addExpense",(req,res)=>{
     }else{
         res.send({message:'user is not authorized'})
     }
+}catch(e){
+    console.log(e)
+    res.send({message:e})
+}
 })
 app.post("/addCategory",(req,res)=>{
+    try{
     //console.log(req.header('authorization'))
     var token =  req.header('authorization')
     const verified = jwt.verify(token, process.env.JWT_SECRET);
@@ -101,8 +117,13 @@ app.post("/addCategory",(req,res)=>{
     }else{
         res.send({message:'user is not authorised'})
     }
+    }catch(e){
+        console.log(e)
+        res.send({message:e})
+    }
 })
 app.get("/getExpense", function (req, res) {   
+    try{
     var token =  req.header('authorization')
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     if(verified){
@@ -117,8 +138,13 @@ app.get("/getExpense", function (req, res) {
     }else{
         res.send({ details: '' })
     }
+    }catch(e){
+        console.log(e)
+        res.send({details:e})
+    }
 }) 
 app.get("/getCategory", function (req, res) {   
+    try{
     var token =  req.header('authorization')
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     if(verified){
@@ -133,6 +159,10 @@ app.get("/getCategory", function (req, res) {
     }else{
         res.send({ details: '' })
     }
+}catch(e){
+    console.log(e)
+    res.send({details:e})
+}
 })
 app.listen(6969,()=>{
     console.log("started")

@@ -24,7 +24,7 @@ const history = useHistory()
     const navigateTo = () => history.push('/Menu')
     return (
         <>
-        
+        { localStorage.getItem('token') == null?history.push('/Login'):(
         <div className="auth-wrapper" id="mystyle">
         
         <div className="auth-inner">
@@ -41,7 +41,7 @@ const history = useHistory()
                 
             </form>
             </div>
-            </div>
+            </div>)}
         </>
     )
 }
