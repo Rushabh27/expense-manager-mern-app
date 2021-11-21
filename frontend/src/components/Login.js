@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import axios from 'axios';
 import {useHistory} from "react-router-dom"
-const Login = ({setLoginUser}) => {
+const Login = () => {
 const history = useHistory()
     
 
@@ -11,14 +11,11 @@ const history = useHistory()
     const login =async()=>{
         
         let res = await axios.post("http://localhost:6969/Login",{email,password})
-        console.log(res)
-        setLoginUser(res.data.user)
+        //console.log(res)
+        localStorage.setItem('token',res.data?res.data.token:null)
         history.push('/Menu')
         
-    }
-
-
-    
+    }    
     const navigateTo = () => history.push('/Register')
     return (
         <>

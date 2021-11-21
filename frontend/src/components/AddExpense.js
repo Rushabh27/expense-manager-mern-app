@@ -5,7 +5,7 @@ const AddExpense = () => {
 const history = useHistory()
 
     const [category, setCategory] = useState([]);
-    const [catvalue,setcatvalue]=useState("");
+    const [catvalue,setcatvalue]=useState("select");
     const [expense,setExpense]=useState("");
     const [date,setDate]=useState("");
     
@@ -16,14 +16,23 @@ const history = useHistory()
             
             setCategory(currentArray => [...currentArray, cat.data.details[i].category])
         }
-        console.log('hello')
     },[]) 
+    const clearState = () => {
+        setcatvalue('select')
+        setDate('')
+        setExpense('')
+      };
     
     const addExpense =async()=>{
-        console.log(date)
-        let res = await axios.post("http://localhost:6969/addExpense",{catvalue,expense,date})
+        //console.log(date)
+        var token = localStorage.getItem('token')
+        let config = {
+            headers: { Authorization: `${token}` }
+        }
+        let res = await axios.post("http://localhost:6969/addExpense",{catvalue,expense,date},config)
         console.log(res)
-
+        clearState()
+        alert(res.data.message)
     }
     
     const navigateTo = () => history.push('/Menu')
@@ -41,20 +50,20 @@ const history = useHistory()
                 <div className="form-group">
                     <label>Category</label>
                     <select className="drop"
-            onChange={e=>setcatvalue(e.target.value)}
-            ><option >Select Category</option>
+            onChange={e=>setcatvalue(e.target.value)} value={catvalue} required
+            ><option value='select'>Select Category</option>
             {category.map(( value, index) => <option value={value} >{value}</option>)}
             </select>
                 </div>
 
                 <div className="form-group">
                     <label>Expense</label>
-                    <input type="text" className="form-control" placeholder="Enter Expense" name="expense" onChange={e=>setExpense(e.target.value)} />
+                    <input type="text" className="form-control" placeholder="Enter Expense" name="expense" onChange={e=>setExpense(e.target.value)} value={expense} required/>
                 </div>
 
                 <div className="form-group">
                     <label>Date</label>
-                    <input type="date" className="form-control" placeholder="Enter Date" name="date" onChange={e=>setDate(e.target.value)} />
+                    <input type="date" className="form-control" placeholder="Enter Date" name="date" onChange={e=>setDate(e.target.value)} value={date} required/>
                 </div>
                 
                 <button type="button" className="btn btn-primary btn-block" onClick={addExpense} id="btn">Add</button>

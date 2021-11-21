@@ -7,45 +7,49 @@ const history = useHistory()
     const [catvalue,setcatvalue]=useState('');
     const [category, setCategory] = useState([]);
     let [data, setData] = useState([]);
-    const [select, setselect] = useState('');
-    //custom data
-     var dataa = []//[{ id: 1, name: 'Mike', city: 'philps', state: 'food' }, 
-    // { id: 2, name: 'Steve', city: 'Square', state: 'Clothes' }, 
-    // { id: 3, name: 'Jhon', city: 'market', state: 'New York' }, 
-    // { id: 4, name: 'philps', city: 'booket', state: 'Texas' }, 
-    // { id: 5, name: 'smith', city: 'brookfield', state: 'Florida' }, 
-    // { id: 6, name: 'Broom', city: 'old street', state: 'Florida' }];
-    //Select onchage function, getting option selected value and save inside state variable
-    function handleChange (e){
-      //set state variable with option value
-      //setselect(e.target.value);
-      console.log('ev',e.target.value)
-      setcatvalue(e.target.value);
+    let [alldata, setAllData] = useState([]);
     
+    
+    function handleChange (e){
+    
+        setcatvalue(e.target.value);
+        let filterdata = alldata.map((item)=>{
+        if(item.category == e.target.value)
+            return item
+        })
+      
+        filterdata = filterdata.filter(notUndefined => notUndefined !== undefined);
+        setData(filterdata)
+        //console.log(filterdata)
     };
     
-   
     //hooks calls after rendering select state
     useEffect(async() => {
+        var dataa = []
         let cat = await axios.get("http://localhost:6969/getCategory")
-        
-        for(var i=0; i<cat.data.details.length;i++){   
-            setCategory(currentArray => [...currentArray, cat.data.details[i].category])
+        if(cat.data.details == ''){
+            alert('not authorised')
+        }else{
+            for(var i=0; i<cat.data.details.length;i++){   
+                setCategory(currentArray => [...currentArray, cat.data.details[i].category])
+            }
         }
 
-        let res = await axios.get("http://localhost:6969/getExpense")
-        console.log(res)
         
-        for(var j=0; j<res.data.details.length;j++){     
-            dataa.push({id:j+1,expense:res.data.details[j].expense,category:res.data.details[j].catvalue,date:new Date(res.data.details[j].date).toLocaleDateString()})
+        let res = await axios.get("http://localhost:6969/getExpense")
+        if(res.data.details == '')
+            alert('not authorised')
+        else{
+            for(var j=0; j<res.data.details.length;j++){     
+                dataa.push({id:j+1,expense:res.data.details[j].expense,category:res.data.details[j].catvalue,date:new Date(res.data.details[j].date).toLocaleDateString()})
+            }
         }
-      //Doing filteration on according to select state option
-      data = dataa.filter(dataa => dataa.category !== catvalue);
-      //set state variable data after filteration
-      setData(dataa)
-      }, [catvalue])
+      
+        setData(dataa)
+        setAllData(dataa)
+      }, [])
     
-    const navigateTo = () => history.push('/ViewExpense')
+    const navigateTo = () => history.push('/Menu')
     return (
         <>
         
@@ -90,9 +94,7 @@ const history = useHistory()
             </table>
             <button type="button" className="btn btn-primary btn-block" onClick={navigateTo} id="mybtn">Menu</button>
        </div>
-        {/* <div className="auth-inner">
-            <h3>View Expense </h3>
-            </div> */}
+        
             </div>
         </>
     )
